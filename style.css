@@ -40,6 +40,7 @@ body {
     gap: 15px;
 }
 
+/* Left side */
 #info {
     background-color: #eddec7;
     border-radius: 10px;
@@ -47,33 +48,39 @@ body {
     display: flex;
     flex-direction: column;
 }
-
+#info h1 {
+    font-family: 'Storystone', sans-serif;
+    font-weight: 500;
+}
 #info p {
     margin-top: 20px;
+    font-family: 'Dosis', sans-serif;
 }
-
-#info > a {
-    display: flex;
-    gap: 3px;
-    margin-top: 12rem;
-    align-items: center;
-    text-decoration: none;
-    background-color: #c5d8e5;
-    width: 265px;
-    padding: 10px;
-    border-radius: 20px;
-}
-
 #info > a > div {
     width: 2.2rem;
     cursor: pointer;
     margin-top: 1px;
 }
 
+/* Button styling */
+#info > a {
+    display: flex;
+    gap: 3px;
+    margin-top: 10rem;
+    align-items: center;
+    text-decoration: none;
+    background-color: #c5d8e5;
+    width: 265px;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: 'Dosis', sans-serif;
+}
 #info > a:hover {
     box-shadow: 0 0 10px black;
 }
 
+
+/* Right side */
 #book-cards {
     background-color: #72A0C1;
     border-radius: 10px;
