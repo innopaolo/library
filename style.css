@@ -129,6 +129,11 @@ body {
     height: 200px;
     padding: 20px;
 }
+.card-content:hover {
+    transition: 0.5s;
+    transform: scale(1.01);
+    box-shadow: 1px 1px 10px black;
+}
 
 
 /* Modal styling */
@@ -194,6 +199,14 @@ input[type="checkbox"] {
     transform: scale(2);
     padding: 10px;
     margin-left: 10px;
+}
+.error-message {
+    color:rgb(199, 60, 60);
+    font-size: 1.6rem;
+    text-align: center;
+    display: none;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 

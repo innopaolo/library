@@ -53,7 +53,7 @@
         <div class="popup-content">
             <span id="close-popup">&times;</span>
             <h2>Add New Book</h2>
-            <form>
+            <form id="book-info">
               <label for="book-title">Title</label>
               <input autocomplete="off" type="text" id="book-title" required>
               <label for="author">Author</label>
@@ -62,6 +62,7 @@
               <input autocomplete="off" type="number" id="pages" required>
               <label for="read">Have you read it? <input type="checkbox" id="read"></label>
               <button type="submit">Add Book</button>
+              <div class="error-message"></div>
             </form>
           </div>
     </div>
