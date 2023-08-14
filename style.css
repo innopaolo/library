@@ -28,6 +28,9 @@ button {
     font-family: 'Dosis', sans-serif;
     letter-spacing: 0.04rem;
 }
+label {
+    width: fit-content;
+}
 
 body {
     background-color: #467a9f;
@@ -74,8 +77,11 @@ body {
     width: 235px;
     padding: 10px;
     border-radius: 20px;
+    transition: transform 0.3s;
 }
-#info > a:hover {
+#info > a:hover,
+.popup-content form button:hover,
+.popup-content span:hover {
     box-shadow: 0 0 10px black;
 }
 
@@ -90,17 +96,24 @@ body {
 #add-btn {
     width: 4.3rem;
     align-self: flex-end;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-right: 25px;
 }
 #add-svg {
-    transition: transform 0.4s;
+    transition: transform 0.3s;
 }
 #add-svg:hover {
     transform: scale(1.1); 
     cursor: pointer;
     background: linear-gradient(45deg, #72A0C1, white);
     border-radius: 50%;
+}
+#add-svg:active,
+#info > a:active,
+.popup-content form button:active,
+.popup-content span:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 .cards {
     display: grid;
@@ -109,9 +122,74 @@ body {
     padding: 20px;
     background-color: #eddec7;
     border-radius: 4px;
-    margin: 5px 14px;
+    margin: 10px 14px;
 }
 
+/* Modal styling */
+#add-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(243, 238, 233, 0.7);
+    z-index: 1000;
+}
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #72A0C1;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Center the popup modal */
+    transform: translate(-50%, -50%);
+}
+.popup-content span {
+    color: black;
+    width: fit-content;
+    background-color: rgb(202, 105, 105);
+    border-radius: 10px;
+    padding: 0 10px;
+    align-self: flex-end;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.6rem;
+    font-family: 'Dosis', sans-serif;
+    margin-top: 1rem;
+}
+.popup-content form input {
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+}
+.popup-content form button {
+    padding: 10px;
+    margin-top: 1rem;
+    width: 50%;
+    align-self: center;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+input[type="checkbox"] {
+    transform: scale(2);
+    padding: 10px;
+    margin-left: 10px;
+    background-color: red;
+}
 
 
 
@@ -125,5 +203,11 @@ body {
 
     #info > a {
         margin-top: 4rem;
+        align-self: center;
     }
+
+    .popup-content {
+        gap: 0.1rem;
+    }
+
   }
