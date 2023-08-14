@@ -18,4 +18,26 @@ max-width: 100%;
 height: auto;
 }
 
+body {
+    background-color: #72A0C1;
+}
 
+#content-box {
+    margin: 40px;
+    padding: 15px;
+    height: 88vh;
+    background-color: #fff5ee;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+}
+
+#info {
+    background-color: #eddec7;
+    border-radius: 10px;
+}
+
+#book-cards {
+    background-color: #72A0C1;
+    border-radius: 10px;
+}
