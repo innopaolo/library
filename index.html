@@ -7,7 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <main id="content-box">
+        <div id="info">
+            <h1>Whisper a secret to the pages, and let a new chapter unfold</h1>
+            <p>This is your private online library. Add some books!</p>
+        </div>
+        <div id="book-cards">
+              <!-- Book cards will be dynamically added here -->
+        </div>
+    </main>
+
+    <div class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="close-add-popup">&times;</span>
+            <h2>Add New Book</h2>
+            <form id="add-form">
+              <label for="book-title">Title</label>
+              <input type="text" id="book-title" required>
+              <label for="author">Author</label>
+              <input type="text" id="author" required>
+              <label for="pages">Number of Pages</label>
+              <input type="number" id="pages" required>
+              <label for="read">Have you read it?</label>
+              <input type="checkbox" id="read">
+              <button type="submit">Add Book</button>
+            </form>
+          </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
