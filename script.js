@@ -67,6 +67,7 @@ function addBooktoDashboard(newBook) {
 
     // Create DOM elements for the card content, avoiding innerHTML
     let titleAuthorContainer = document.createElement("div");
+
     let title = document.createElement("h2");
     title.textContent = newBook.title; 
     let author = document.createElement("p");
@@ -74,14 +75,21 @@ function addBooktoDashboard(newBook) {
     let pages = document.createElement("p");
     pages.textContent = newBook.pages + " " + "pages"; 
 
+    let bottomPart = document.createElement("div");
+    bottomPart.className = "bottom-part";
+
     let readStatus = document.createElement("p");
     readStatus.textContent = newBook.read ? "Finished" : "Currently reading";
+    let removeBtn = document.createElement("span");
+    removeBtn.textContent = "\u{1F5D1}"; // Unicode for wastebasket
     
     titleAuthorContainer.appendChild(title);
     titleAuthorContainer.appendChild(author);
     newCard.appendChild(titleAuthorContainer);
     newCard.appendChild(pages);
-    newCard.appendChild(readStatus);
+    bottomPart.appendChild(readStatus);
+    bottomPart.appendChild(removeBtn);
+    newCard.appendChild(bottomPart);
 
     cardsContainer.appendChild(newCard);
 }   

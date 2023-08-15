@@ -126,16 +126,33 @@ body {
 .card-content {
     background: linear-gradient(to left, #fff5ee 97%, #eddec7 97%, #eddec7);
     border-radius: 13px 4px 4px 13px;
-    padding: 15px 20px;
+    padding: 15px 20px 5px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     overflow: hidden;  
     word-wrap: break-word; /* Break long words */
 }
-.card-content p:nth-child(3) {
+.bottom-part {
+    display: flex;
+    align-items: center;
+}
+.bottom-part p {
     font-family: 'Dosis', sans-serif;
     margin-top: auto;
+    margin-bottom: 10px;
+}
+.bottom-part span {
+    margin-left: auto;
+}
+.bottom-part p:hover,
+.bottom-part span:hover {
+    text-shadow: 0 0 10px #467a9f;
+    cursor: pointer;
+    width:fit-content;
+}
+.bottom-part span:hover {
+    text-shadow: 0 0 10px rgb(202, 105, 105);
 }
 .card-content:hover {
     transition: 0.5s;
