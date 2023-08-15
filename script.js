@@ -2,6 +2,7 @@
 const addBtn = document.getElementById("add-btn");
 const addPopup = document.getElementById("add-popup");
 const closeBtn = document.getElementById("close-popup");
+const cardsContainer = document.querySelector(".cards-container");
 
 addBtn.addEventListener("click", () => {
   addPopup.style.display = "flex";
@@ -29,7 +30,7 @@ function Book(title, author, pages, read) {
 }
  
 const bookFormInfo = document.getElementById("book-info");
-const errorMessage = document.querySelector('.error-message');
+const errorMessage = document.querySelector(".error-message");
 
 bookFormInfo.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -49,7 +50,8 @@ bookFormInfo.addEventListener("submit", (e) => {
     );
     if (!exists) {
         myLibrary.push(newBook);
-        addForm.reset();
+        bookFormInfo.reset();
+        addBooktoDashboard(newBook);
         // Exit the popup modal
         addPopup.style.display = "none";
     } else {
@@ -59,7 +61,27 @@ bookFormInfo.addEventListener("submit", (e) => {
 });
 
 
+function addBooktoDashboard(newBook) {
+    let newCard = document.createElement('div');
+    newCard.className = "card-content";
 
-function addBooktoLibrary() {
+    // Create DOM elements for the card content, avoiding innerHTML
+    let titleAuthorContainer = document.createElement("div");
+    let title = document.createElement("h2");
+    title.textContent = newBook.title; 
+    let author = document.createElement("p");
+    author.textContent = "by" + " " + newBook.author; 
+    let pages = document.createElement("p");
+    pages.textContent = newBook.pages + " " + "pages"; 
 
-}
+    let readStatus = document.createElement("p");
+    readStatus.textContent = newBook.read ? "Finished" : "Currently reading";
+    
+    titleAuthorContainer.appendChild(title);
+    titleAuthorContainer.appendChild(author);
+    newCard.appendChild(titleAuthorContainer);
+    newCard.appendChild(pages);
+    newCard.appendChild(readStatus);
+
+    cardsContainer.appendChild(newCard);
+}   
