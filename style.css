@@ -118,7 +118,7 @@ body {
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
-    gap: 10px;
+    gap: 15px;
     padding: 10px;
     border-radius: 4px;
     margin: 10px 14px;
@@ -136,10 +136,10 @@ body {
 .bottom-part {
     display: flex;
     align-items: center;
+    margin-top: auto;
 }
 .bottom-part p {
     font-family: 'Dosis', sans-serif;
-    margin-top: auto;
     margin-bottom: 10px;
 }
 .bottom-part span {

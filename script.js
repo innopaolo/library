@@ -27,6 +27,7 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.id = title + author;
 }
  
 const bookFormInfo = document.getElementById("book-info");
@@ -50,10 +51,16 @@ bookFormInfo.addEventListener("submit", (e) => {
     );
     if (!exists) {
         myLibrary.push(newBook);
+        
+        // Use the book object's id to associate it with its DOM element 
+        const bookID = newBook.id;
+
         bookFormInfo.reset();
-        addBooktoDashboard(newBook);
+        addBooktoDashboard(newBook, bookID);
+
         // Exit the popup modal
         addPopup.style.display = "none";
+
     } else {
         errorMessage.textContent = "Book already exists!";
         errorMessage.style.display = "block";
@@ -61,7 +68,7 @@ bookFormInfo.addEventListener("submit", (e) => {
 });
 
 
-function addBooktoDashboard(newBook) {
+function addBooktoDashboard(newBook, bookID) {
     let newCard = document.createElement('div');
     newCard.className = "card-content";
 
@@ -79,8 +86,13 @@ function addBooktoDashboard(newBook) {
     bottomPart.className = "bottom-part";
 
     let readStatus = document.createElement("p");
+    readStatus.className = "read-status";
+    readStatus.setAttribute("data-book-id", bookID); // To identify book for toggling read status
     readStatus.textContent = newBook.read ? "Finished" : "Currently reading";
+
     let removeBtn = document.createElement("span");
+    removeBtn.className = "remove-btn";
+    removeBtn.setAttribute("data-book-id", bookID); // To identify book for removal
     removeBtn.textContent = "\u{1F5D1}"; // Unicode for wastebasket
     
     titleAuthorContainer.appendChild(title);
@@ -92,4 +104,37 @@ function addBooktoDashboard(newBook) {
     newCard.appendChild(bottomPart);
 
     cardsContainer.appendChild(newCard);
-}   
+}
+
+// Functions for every instance of Book
+Book.prototype.toggleRead = function() {
+    console.log("this.id:", this.id);
+    const toggleStatus = document.querySelector(`[data-book-id="${this.id}"]`);
+    console.log("toggleStatus:", toggleStatus);
+
+    // Conditional wrapper to ensure that the element exists before toggling
+    if (toggleStatus) {
+        if (this.read) {
+            toggleStatus.textContent = "Currently reading";
+            this.read = false;
+        } else {
+            toggleStatus.textContent = "Finished";
+            this.read = true;
+        }
+    } 
+};
+
+Book.prototype.toggleRead
+
+// Listener for both toggling and remove
+cardsContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("read-status")) {
+        const bookId = event.target.getAttribute("data-book-id");
+        const book = myLibrary.find(book => book.id === bookId);
+        if (book) {
+            book.toggleRead();
+        }
+    } else {
+        // Remove card
+    }
+});
