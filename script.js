@@ -22,12 +22,41 @@ closeBtn.addEventListener("click", () => {
 // Dynamically add book cards
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = title + author;
+class Book {
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = title + author;
+    }
+
+    toggleRead() {
+        const toggleStatus = document.querySelector(`[data-book-id="${this.id}"]`);
+    
+        // Conditional wrapper to ensure that the element exists before toggling
+        if (toggleStatus && toggleStatus.classList.contains("read-status")) {
+            if (this.read) {
+                toggleStatus.textContent = "Currently reading";
+                this.read = false;
+            } else {
+                toggleStatus.textContent = "Finished";
+                this.read = true;
+            }
+        } 
+    }
+
+    removeBook() {
+        const removeBtn = document.querySelector(`span.remove-btn[data-book-id="${this.id}"]`)
+    
+        if (removeBtn && removeBtn.classList.contains("remove-btn")) {
+            let bookIndex = myLibrary.findIndex(object => object.id === this.id);
+            myLibrary.splice(bookIndex, 1); // Delete book from array using its index
+    
+            // Deletes the associated DOM element
+            removeBtn.closest(".card-content").remove();
+        }
+    }
 }
  
 const bookFormInfo = document.getElementById("book-info");
@@ -106,41 +135,11 @@ function addBooktoDashboard(newBook, bookID) {
     cardsContainer.appendChild(newCard);
 }
 
-// Functions for every instance of Book
-Book.prototype.toggleRead = function() {
-    const toggleStatus = document.querySelector(`[data-book-id="${this.id}"]`);
-
-    // Conditional wrapper to ensure that the element exists before toggling
-    if (toggleStatus && toggleStatus.classList.contains("read-status")) {
-        if (this.read) {
-            toggleStatus.textContent = "Currently reading";
-            this.read = false;
-        } else {
-            toggleStatus.textContent = "Finished";
-            this.read = true;
-        }
-    } 
-};
-
-Book.prototype.removeBook = function() {
-    const removeBtn = document.querySelector(`span.remove-btn[data-book-id="${this.id}"]`)
-
-    if (removeBtn && removeBtn.classList.contains("remove-btn")) {
-        let bookIndex = myLibrary.findIndex(object => object.id === this.id);
-        myLibrary.splice(bookIndex, 1); // Delete book from array using its index
-
-        // Deletes the associated DOM element
-        removeBtn.closest(".card-content").remove();
-    }
-};
-
-
 // Listener for both toggling and remove
 cardsContainer.addEventListener("click", (event) => {
+
     const bookId = event.target.getAttribute("data-book-id");
-    console.log("bookId:", bookId); // Check the value of bookId
     const book = myLibrary.find(book => book.id === bookId);
-    console.log("book:", book); // Check the value of book
 
     if (event.target.classList.contains("read-status")) {
         if (book) {
