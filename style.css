@@ -256,6 +256,12 @@ input[type="checkbox"] {
 
 
   @media (max-width: 768px) {
+    a, a:hover, a:visited, a:active, a:link {
+        text-decoration: none;
+        font-family: 'Dosis', sans-serif;
+        color: black;
+    } 
+
     #content-box {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -265,6 +271,10 @@ input[type="checkbox"] {
     #info {
         font-size: clamp(0.8rem, 4vw, 1.5rem);
         padding: 20px;
+    }
+
+    #info p {
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
     }
 
     #book-cards {
