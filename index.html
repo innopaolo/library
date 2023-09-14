@@ -41,14 +41,21 @@
             <h2>Add New Book</h2>
             <form id="book-info">
               <label for="book-title">Title</label>
-              <input autocomplete="off" type="text" id="book-title" required>
+              <input autocomplete="off" type="text" id="book-title" maxlength="50">
+
               <label for="author">Author</label>
-              <input autocomplete="off" type="text" id="author" required>
+              <input autocomplete="off" type="text" id="author" maxlength="25" required>
+
               <label for="pages">Number of Pages</label>
-              <input autocomplete="off" type="number" id="pages" required>
-              <label for="read">Have you read it? <input type="checkbox" id="read"></label>
+              <input autocomplete="off" type="number" id="pages" max="99999" min="1" required>
+
+              <label for="read">Have you read it? 
+                <input type="checkbox" id="read">
+              </label>
+
               <button type="submit">Add Book</button>
               <div class="error-message"></div>
+
             </form>
           </div>
     </div>

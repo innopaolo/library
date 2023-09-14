@@ -187,15 +187,20 @@ body {
     transform: translate(-50%, -50%);
 }
 .popup-content span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
     color: black;
-    width: fit-content;
     background-color: rgb(202, 105, 105);
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 0 10px;
     align-self: flex-end;
-    font-size: 28px;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
+}
+.popup-content h2 {
+    margin-top: 2rem;
 }
 .popup-content form {
     display: flex;
@@ -204,6 +209,7 @@ body {
     font-size: 1.6rem;
     font-family: 'Dosis', sans-serif;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .popup-content form input {
     padding: 10px;
@@ -256,6 +262,12 @@ input[type="checkbox"] {
 
 
   @media (max-width: 768px) {
+    a, a:hover, a:visited, a:active, a:link {
+        text-decoration: none;
+        font-family: 'Dosis', sans-serif;
+        color: black;
+    } 
+
     #content-box {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -265,6 +277,10 @@ input[type="checkbox"] {
     #info {
         font-size: clamp(0.8rem, 4vw, 1.5rem);
         padding: 20px;
+    }
+
+    #info p {
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
     }
 
     #book-cards {
