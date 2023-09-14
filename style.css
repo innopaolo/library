@@ -187,15 +187,20 @@ body {
     transform: translate(-50%, -50%);
 }
 .popup-content span {
+    position: absolute;
+    top: 5px;
+    right: 5px;
     color: black;
-    width: fit-content;
     background-color: rgb(202, 105, 105);
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 0 10px;
     align-self: flex-end;
-    font-size: 28px;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
+}
+.popup-content h2 {
+    margin-top: 2rem;
 }
 .popup-content form {
     display: flex;
@@ -204,6 +209,7 @@ body {
     font-size: 1.6rem;
     font-family: 'Dosis', sans-serif;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .popup-content form input {
     padding: 10px;
